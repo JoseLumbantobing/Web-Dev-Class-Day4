@@ -1,0 +1,12 @@
+<div class="login-container">
+    <h2>Login Page</h2>
+    <form>
+      <label for="username">Username:</label>
+      <input type="text" id="username" [(ngModel)]="login.username" name="username" autocomplete="off" required>
+  
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="login.password" name="password" required>
+  
+      <button type="button" (click)="submitLogin()">Login</button>
+    </form>
+</div>

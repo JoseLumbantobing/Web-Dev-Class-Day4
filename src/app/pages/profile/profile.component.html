@@ -1,0 +1,21 @@
+<h1>Profile</h1>
+
+<div *ngFor="let object of karyawan">
+    NIK: {{ object.nik }}   <br>
+    Nama: {{ object.name }} <br>
+    Pekerjaan: {{ object.job }} <br>
+    Tanggal Masuk: {{ object.join_date }}
+    <hr>
+</div>
+
+<br><br><br><br>
+<hr>
+<div *ngIf="karyawanTerpilih.nik">
+    Karyawan Terpilih: <br>
+    NIK Karyawan: {{ karyawanTerpilih.nik }} <br>
+    Nama Karyawan: {{ karyawanTerpilih.name }}
+</div>
+<div *ngIf="karyawanTerpilih.nik === 0">
+    <h2>Tidak ada karyawan terpilih!</h2>
+</div>
+<hr>
