@@ -19,12 +19,22 @@ export class ProfileComponent implements OnInit {
   constructor(private pService: ProfileService, private route: ActivatedRoute) {
     this.route.params.subscribe((x: any) => {
       this.NIKKaryawan= x.id;
-    })
+    });
+
+    this.route.url.subscribe((segments) => {
+      this.isUpdate = segments.some((segment) => segment.path === 'update');
+    });
+
+    this.route.url.subscribe((segments) => {
+      this.isAdd = segments.some((segment) => segment.path === 'add');
+    });
   }
 
   karyawan: ProfileModel[] = [];
   NIKKaryawan: any;
   karyawanTerpilih: ProfileModel = new ProfileModel();
+  isUpdate: boolean = false;
+  isAdd: boolean = false;
 
   ngOnInit(): void {
     this.pService.getProfileList().subscribe((x: any) => {

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { profileList } from '../mock/profile.mock';
 import { FormGroup } from '@angular/forms';
 import { UpdateModel } from '../model/updateProfile';
+import { ProfileModel } from '../model/profile';
 
 @Injectable({
   providedIn: 'root'
@@ -22,14 +23,41 @@ export class ProfileService {
     return this.http.get('https://reqres.in/api/user/' + _nik);
   }
 
-  updateProfile(form: FormGroup) {
-    const updateUser: UpdateModel = {
-      name: form.value.name,
+  updateProfileData(form: FormGroup, karyawan: ProfileModel[]) {
+    const updateUser: ProfileModel = {
+      id: 99,
+      first_name: form.value.first_name,
+      last_name: form.value.last_name,
       email: form.value.email,
-      birthdate: form.value.birthdate,
-      address: form.value.address
+      avatar: form.value.avatar
     };
 
-    console.log(updateUser);
+    const updateValue = karyawan.findIndex(x => x.email === form.value.email);
+
+    if(updateValue > -1) {
+      karyawan[updateValue] = updateUser;
+      form.reset();
+    } else {
+      alert('Data user tidak ditemukan');
+    }
+  }
+
+  addProfileData(form: FormGroup, karyawan: ProfileModel[]) {
+    const addUser: ProfileModel = {
+      id: 99,
+      first_name: form.value.first_name,
+      last_name: form.value.last_name,
+      email: form.value.email,
+      avatar: form.value.avatar
+    };
+
+    const addValue = karyawan.findIndex(x => x.email === form.value.email);
+
+    if(addValue > -1) {
+      alert('Sudah ada User.')
+    } else {
+      karyawan.push(addUser);
+      form.reset();
+    }
   }
 }

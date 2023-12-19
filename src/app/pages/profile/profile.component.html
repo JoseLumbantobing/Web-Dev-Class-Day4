@@ -1,8 +1,10 @@
 <h1>Profile</h1>
 
 <div *ngFor="let object of karyawan">
-    NIK: {{ object.id }}   <br>
-    Nama: {{ object.first_name }} {{ object.last_name }}
+    ID: {{ object.id }}   <br>
+    Name: {{ object.first_name }} {{ object.last_name }} <br>
+    Email: {{ object.email }} <br>
+    Avatar: {{ object.avatar }}
     <hr>
 </div>
 
@@ -10,13 +12,17 @@
 <hr>
 <div *ngIf="karyawanTerpilih.id">
     Karyawan Terpilih: <br>
-    NIK Karyawan: {{ karyawanTerpilih.id }} <br>
+    ID Karyawan: {{ karyawanTerpilih.id }} <br>
     Nama Karyawan: {{ karyawanTerpilih.first_name }} {{ karyawanTerpilih.last_name }}
 </div>
 <div *ngIf="karyawanTerpilih.id === 0">
     <h2>Tidak ada karyawan terpilih!</h2>
 </div>
 <hr>
+
+<app-update *ngIf="isUpdate" tipe="update" [karyawan]="karyawan"></app-update>
+<app-update *ngIf="isAdd" tipe="add" [karyawan]="karyawan"></app-update>
+
 <!-- 
 
 <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">

@@ -11,7 +11,8 @@ import { UpdateComponent } from '../update/update.component';
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    UpdateComponent
   ],
   imports: [
     CommonModule,
