@@ -1,21 +1,42 @@
 <h1>Profile</h1>
 
 <div *ngFor="let object of karyawan">
-    NIK: {{ object.nik }}   <br>
-    Nama: {{ object.name }} <br>
-    Pekerjaan: {{ object.job }} <br>
-    Tanggal Masuk: {{ object.join_date }}
+    NIK: {{ object.id }}   <br>
+    Nama: {{ object.first_name }} {{ object.last_name }}
     <hr>
 </div>
 
 <br><br><br><br>
 <hr>
-<div *ngIf="karyawanTerpilih.nik">
+<div *ngIf="karyawanTerpilih.id">
     Karyawan Terpilih: <br>
-    NIK Karyawan: {{ karyawanTerpilih.nik }} <br>
-    Nama Karyawan: {{ karyawanTerpilih.name }}
+    NIK Karyawan: {{ karyawanTerpilih.id }} <br>
+    Nama Karyawan: {{ karyawanTerpilih.first_name }} {{ karyawanTerpilih.last_name }}
 </div>
-<div *ngIf="karyawanTerpilih.nik === 0">
+<div *ngIf="karyawanTerpilih.id === 0">
     <h2>Tidak ada karyawan terpilih!</h2>
 </div>
 <hr>
+<!-- 
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <div>
+      <label>
+        Name:
+        <input formControlName="name" placeholder="Your name">
+      </label>
+    </div>
+    <div>
+      <label>
+        Email:
+        <input formControlName="email" placeholder="Your email">
+      </label>
+    </div>
+    <div>
+      <label>
+        Message:
+        <input formControlName="message" placeholder="Your message">
+      </label>
+    </div>
+    <button type="submit">Send</button>
+</form> -->

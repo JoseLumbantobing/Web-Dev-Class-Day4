@@ -23,13 +23,11 @@ export class LoginService {
     }
   ];
 
-  private isAuth: boolean = false;
 
   userVerification(_username: string, _password: string): boolean {
     const matchedUser = this.loginList.find(x => x.username === _username && x.password === _password);
 
     if(matchedUser) {
-      this.isAuth = true;
       return true;
     } else {
       return false;

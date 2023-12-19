@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileModel } from 'src/app/model/profile';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -9,6 +10,12 @@ import { ProfileService } from 'src/app/services/profile.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  // myForm: FormGroup = new FormGroup({
+  //   name: new FormControl('Semmy'),
+  //   email: new FormControl(''),
+  //   message: new FormControl('')
+  // });
+
   constructor(private pService: ProfileService, private route: ActivatedRoute) {
     this.route.params.subscribe((x: any) => {
       this.NIKKaryawan= x.id;
@@ -20,10 +27,21 @@ export class ProfileComponent implements OnInit {
   karyawanTerpilih: ProfileModel = new ProfileModel();
 
   ngOnInit(): void {
-    this.karyawan = this.pService.profileList;
+    this.pService.getProfileList().subscribe((x: any) => {
+      this.karyawan = x.data;
+    })
 
-    if(this.NIKKaryawan) {
-      this.karyawanTerpilih = this.pService.getProfileByNik(Number(this.NIKKaryawan)) || new ProfileModel();
-    }
+  if(this.NIKKaryawan) {
+    this.pService.getProfileByNik(Number(this.NIKKaryawan)).subscribe(x => {
+      console.log(x);
+    });
   }
+  }
+
+  // onSubmit(form: FormGroup) {
+  //   console.log('', form.valid);
+  //   console.log('Name:', form.value.name);
+  //   console.log('Email:', form.value.email);
+  //   console.log('Message:', form.value.message);
+  // }
 }

@@ -1,41 +1,35 @@
 import { Injectable } from '@angular/core';
-import { ProfileModel } from '../model/profile';
+import { HttpClient } from '@angular/common/http';
+import { profileList } from '../mock/profile.mock';
+import { FormGroup } from '@angular/forms';
+import { UpdateModel } from '../model/updateProfile';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
 
-  constructor() { }
-
-  // array of object
-  profileList: ProfileModel[] = [
-    {
-      nik: 1,
-      name: 'Albert',
-      job: 'Programmer',
-      join_date: '2022-01-01'
-    },
-    {
-      nik: 2,
-      name: 'Juan',
-      job: 'System Analyst',
-      join_date: '2022-02-02'
-    },
-    {
-      nik:3,
-      name: 'Jacob',
-      job: 'QA',
-      join_date: '2022-03-03'
-    }
-  ];
+  constructor(private http: HttpClient) { }
 
   getProfileList() {
     // Get API
-    return this.profileList;
+    // return this.profileList;
+    return this.http.get('https://reqres.in/api/users');
   }
 
   getProfileByNik(_nik: number) {
-    return this.profileList.find(x => x.nik === _nik);
+    // return profileList.find(x => x.nik === _nik);
+    return this.http.get('https://reqres.in/api/user/' + _nik);
+  }
+
+  updateProfile(form: FormGroup) {
+    const updateUser: UpdateModel = {
+      name: form.value.name,
+      email: form.value.email,
+      birthdate: form.value.birthdate,
+      address: form.value.address
+    };
+
+    console.log(updateUser);
   }
 }
