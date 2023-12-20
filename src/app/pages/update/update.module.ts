@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 import { UpdateComponent } from './update.component';
 
 
@@ -12,7 +13,8 @@ import { UpdateComponent } from './update.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ButtonModule
   ]
 })
 export class UpdateModule { }
