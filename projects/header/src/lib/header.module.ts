@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FooterModule } from '../public-api';
+// import { FooterModule } from '../public-api';
 import { HeaderComponent } from './header.component';
 
 
@@ -9,7 +10,7 @@ import { HeaderComponent } from './header.component';
     HeaderComponent
   ],
   imports: [
-    FooterModule
+    CommonModule
   ],
   exports: [
     HeaderComponent
