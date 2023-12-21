@@ -1,0 +1,25 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* width: 100%; */
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+button {
+    border-radius: 40%;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: rgb(190, 190, 190);
+}
+
+button:hover {
+    background-color: rgb(175, 175, 175);
+}

@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    background-color: rgb(69, 129, 40);
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 24px;
+}
+
+.header p {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.navbar {
+    display: flex;
+    list-style-type: none;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.navbar li {
+    cursor: pointer;
+}
